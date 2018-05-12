@@ -32,7 +32,8 @@ for filename in ary:
 		year_buckets[year][month] = {}
 	if day not in year_buckets[year][month]:
 		f = FileURLs(diary_dir + "/" + filename)
-		year_buckets[year][month][day] = f.urls()
+		if len(f.urls()) > 0:
+			year_buckets[year][month][day] = f.urls()
 
 o = NestedHTML(year_buckets)
 o.dump_html()
