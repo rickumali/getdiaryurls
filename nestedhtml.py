@@ -55,3 +55,13 @@ class NestedHTML(object):
 			month_buckets = self.h[year]
 			for month in sorted(month_buckets):
 				print year, month, self.h[year][month]
+
+	def dump_lastchar(self):
+		for year in sorted(self.h):
+			month_buckets = self.h[year]
+			for month in sorted(month_buckets):
+				day_buckets = self.h[year][month]
+				for day in sorted(day_buckets):
+					day_array = self.h[year][month][day]
+					for url in day_array:
+						print url[-1]
