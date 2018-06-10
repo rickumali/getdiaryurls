@@ -4,6 +4,21 @@
 
 import re
 
+def has_bad_lastchar(s):
+	if s[-1] == '.':
+		return True
+	if s[-1] == ')':
+		return True
+	if s[-1] == ',':
+		return True
+	if s[-1] == '\'':
+		return True
+	if s[-1] == ':':
+		return True
+	if s[-1] == '"':
+		return True
+	return False
+
 class FileURLs(object):
 
 	def __init__(self, filename):
@@ -14,7 +29,10 @@ class FileURLs(object):
 		for line in f:
 			m = url_re.search(line.rstrip())
 			if m:
-				self.url_list.append(m.group())
+				u = m.group()
+				while has_bad_lastchar(u):
+					u = u[:-1] # Remove last character
+				self.url_list.append(u)
 			else:
 				pass
 
