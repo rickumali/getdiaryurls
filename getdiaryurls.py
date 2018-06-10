@@ -36,4 +36,5 @@ for filename in ary:
 			year_buckets[year][month][day] = f.urls()
 
 o = NestedHTML(year_buckets)
+# o.dump_lastchar()
 o.dump_html()
